@@ -82,6 +82,8 @@ class Parser(rml_parse):
             'number_to_string': self.number_to_string,
             'partner_address': self.partner_address,
             'net_price': self.net_price,
+            'get_net_price':self.get_net_price,
+            'get_total_price':self.get_total_price,
             'datetime': datetime,
             'context': context,
             'tools': tools,
@@ -92,6 +94,16 @@ class Parser(rml_parse):
 
     def number_to_string(self, val):
         return conversor.to_word(val)
+
+    def get_net_price( self, product_id , order):
+        for order_line in order.order_line:
+            if order_line.product_id == product_id:
+                return order_line.price_unit_with_tax
+    
+    def get_total_price( self, line , order):
+        for order_line in order.order_line:
+            if order_line.product_id == line.product_id:
+                return order_line.price_unit_with_tax * line.product_qty
 
     # Partner
     def partner_address(self, partner, context=None):

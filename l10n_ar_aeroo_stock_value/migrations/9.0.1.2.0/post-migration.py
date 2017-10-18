@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2015  ADHOC SA  (http://www.adhoc.com.ar)
-#    All Rights Reserved.
+#    OpenUpgrade module for Odoo
+#    @copyright 2015-Today: Odoo Community Association
+#    @author: Stephane LE CORNEC
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,34 +19,13 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    'name': 'Base Module For Argentinian Like Aeroo Reports',
-    'version': '9.0.1.3.0',
-    'category': 'Localization/Argentina',
-    'sequence': 14,
-    'author': 'ADHOC SA',
-    'website': 'www.adhoc.com.ar',
-    'license': 'AGPL-3',
-    'summary': '',
-    'description': """
-Base Module For Argentinian Like Aeroo Reports
-==============================================
-    """,
-    'depends': [
-        'report_aeroo',
-        'report_extended',
-        'report_custom_filename',
-    ],
-    'external_dependencies': {
-    },
-    'data': [
-        'report_configuration_defaults_data.xml',
-    ],
-    'demo': [
-    ],
-    'test': [
-    ],
-    'installable': True,
-    'auto_install': False,
-    'application': False,
-}
+
+from openupgradelib import openupgrade
+
+
+@openupgrade.migrate()
+def migrate(cr, version):
+    # because we add the disable of this action on this version
+    # and it only works on install, we force it
+    openupgrade.load_data(
+        cr, 'l10n_ar_aeroo_stock', 'migrations/9.0.1.2.0/mig_data.xml')

@@ -19,8 +19,8 @@
 #
 ##############################################################################
 {
-    'name': 'Base Module For Argentinian Like Aeroo Reports',
-    'version': '9.0.1.3.0',
+    'name': 'Argentinian Like Stock Picking Aeroo Report',
+    'version': '9.0.1.3.1',
     'category': 'Localization/Argentina',
     'sequence': 14,
     'author': 'ADHOC SA',
@@ -28,18 +28,19 @@
     'license': 'AGPL-3',
     'summary': '',
     'description': """
-Base Module For Argentinian Like Aeroo Reports
-==============================================
+Argentinian Like Stock Picking Aeroo Report
+===========================================
     """,
     'depends': [
-        'report_aeroo',
-        'report_extended',
-        'report_custom_filename',
+        'report_extended_stock',
+        'l10n_ar_aeroo_base',
+        'l10n_ar_account',
     ],
     'external_dependencies': {
     },
     'data': [
         'report_configuration_defaults_data.xml',
+        'report.xml',
     ],
     'demo': [
     ],
